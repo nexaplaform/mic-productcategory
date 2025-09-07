@@ -19,7 +19,9 @@ public class BeanConfiguration {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration corsConfiguration = new CorsConfiguration();
         corsConfiguration.setAllowedOrigins(List.of(
-                "http://localhost:4200"
+                "http://localhost:4200",
+                "http://mic-productcategory-production.up.railway.app",
+                "https://mic-productcategory-production.up.railway.app"
         ));
         corsConfiguration.setAllowedMethods(Arrays.asList(
                 HttpMethod.GET.name(),

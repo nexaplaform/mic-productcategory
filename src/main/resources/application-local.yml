@@ -1,10 +1,10 @@
 spring:
   application:
-    name: mic-auth
+    name: mic-productcategory
   datasource:
-    url: jdbc:postgresql://localhost:5432/productcategory
-    username: ${POSTGRES_USER:userAuth}
-    password: ${POSTGRES_PASSWORD:passAuth}
+    url: jdbc:postgresql://crossover.proxy.rlwy.net:41618/railway
+    username: postgres
+    password: XMxIGGlDdlMItoOANTQflFleMjDXFMKr
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:

@@ -1,11 +1,15 @@
 package com.fiverr.app;
 
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.servers.Server;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.bind.annotation.CrossOrigin;
 
 @SpringBootApplication
-@CrossOrigin(origins = "https://mic-productcategory-production.up.railway.app")
+@OpenAPIDefinition(servers = {
+        @Server(url = "/", description = "Default Server"),
+        @Server(url = "https://mic-productcategory-production.up.railway.app/", description = "Production Server")
+})
 public class MicProductCategoryApplication {
 
 	public static void main(String[] args) {

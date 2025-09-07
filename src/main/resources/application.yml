@@ -1,0 +1,13 @@
+server:
+  port: 6001
+
+spring:
+  application:
+    name: mic-productcategory
+
+  profiles:
+    active: ${PROFILE:local}
+
+  springdoc:
+    show-actuator: true
+

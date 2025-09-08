@@ -18,7 +18,7 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("/categories")
+@RequestMapping("/v1/categories")
 @Tag(name = "Categories", description = "Category Administration.")
 public class CategoryController implements CategoryApi {
 
@@ -51,10 +51,5 @@ public class CategoryController implements CategoryApi {
     @Override
     public ResponseEntity<List<CategoryDtoOut>> findAll(Integer page, Integer size, SortEnumDTO sort) {
         return new ResponseEntity<>(mapper.toDtoList(useCase.findAll(page, size, sort.getValue())), HttpStatus.CREATED);
-    }
-
-    @Override
-    public ResponseEntity<List<CategoryDtoOut>> getSubcategories(Integer page, Integer size, String sort, SortEnumDTO sortDirection) {
-        return CategoryApi.super.getSubcategories(page, size, sort, sortDirection);
     }
 }

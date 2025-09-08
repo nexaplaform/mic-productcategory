@@ -3,16 +3,14 @@ package com.fiverr.app.infrastructure.db.postgres.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.List;
-
 @With
 @Data
 @Entity
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "categories")
-@EqualsAndHashCode(exclude = {"subCategories"})
-public class CategoryEntity {
+@Table(name = "subcategories")
+public class SubCategoryEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,11 +27,4 @@ public class CategoryEntity {
 
     @Column(name = "enabled")
     private Boolean enabled;
-
-    @ManyToMany
-    @JoinTable(
-            name = "category_subcategory",
-            joinColumns = @JoinColumn(name = "category_id"),
-            inverseJoinColumns = @JoinColumn(name = "subcategory_id"))
-    private List<SubCategoryEntity> subCategories;
 }

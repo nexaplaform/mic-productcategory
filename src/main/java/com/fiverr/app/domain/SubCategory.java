@@ -2,19 +2,17 @@ package com.fiverr.app.domain;
 
 import lombok.*;
 
-import java.util.List;
-
 @With
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Category {
+public class SubCategory {
 
     private Long id;
     private String name;
     private String description;
     private String route;
     private Boolean enabled;
-    private List<SubCategory> subCategories;
+
 }

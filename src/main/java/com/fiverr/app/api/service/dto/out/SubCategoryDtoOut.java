@@ -6,13 +6,11 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.With;
 
-import java.util.List;
-
 @With
 @Data
 @Builder
 @AllArgsConstructor
-public class CategoryDtoOut {
+public class SubCategoryDtoOut {
 
     @Schema(example = "1")
     private Long id;
@@ -28,6 +26,4 @@ public class CategoryDtoOut {
 
     @Schema(example = "true")
     private Boolean enabled;
-
-    private List<SubCategoryDtoOut> subCategories;
 }

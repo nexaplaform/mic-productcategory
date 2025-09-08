@@ -1,18 +1,15 @@
 package com.fiverr.app.api.service.dto.in;
 
-import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
-
-import java.util.List;
 
 @With
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CategoryDtoIn {
+public class SubCategoryDtoIn {
 
     @NotBlank
     @Schema(example = "Restaurante", description = "Nombre de la categoría")
@@ -28,7 +25,4 @@ public class CategoryDtoIn {
     @NonNull
     @Schema(example = "True", description = "Estado de la categoría")
     private Boolean enabled;
-
-    @ArraySchema(schema = @Schema(implementation = Integer.class, description = "Listado de ids de sub-categorias", example = "[\"1\", \"2\"]"))
-    private List<Long> subCategoryIds;
 }

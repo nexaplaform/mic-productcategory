@@ -5,7 +5,7 @@ import com.fiverr.app.domain.exception.EntityNotFoundException;
 import com.fiverr.app.domain.repository.CategoryRepository;
 import com.fiverr.app.infrastructure.db.postgres.entity.CategoryEntity;
 import com.fiverr.app.infrastructure.db.postgres.mapper.CategoryEntityMapper;
-import com.fiverr.app.infrastructure.db.postgres.repositories.CategoryRepositoryAdapter;
+import com.fiverr.app.infrastructure.db.postgres.repositories.CategoryJpaRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -22,7 +22,7 @@ import static com.fiverr.app.domain.error.Errors.NOT_FOUND_RECORD;
 public class CategoryRepositoryImpl implements CategoryRepository {
 
     private final CategoryEntityMapper mapper;
-    private final CategoryRepositoryAdapter repository;
+    private final CategoryJpaRepository repository;
 
     @Override
     public Category create(Category model) {
@@ -39,7 +39,7 @@ public class CategoryRepositoryImpl implements CategoryRepository {
 
     @Override
     public Category update(Category model) {
-       return this.create(model);
+        return this.create(model);
     }
 
     @Override

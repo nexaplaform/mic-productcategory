@@ -1,27 +1,27 @@
 package com.fiverr.app.infrastructure.db.postgres.mapper;
 
-import com.fiverr.app.domain.Category;
-import com.fiverr.app.infrastructure.db.postgres.entity.CategoryEntity;
+import com.fiverr.app.domain.SubCategory;
+import com.fiverr.app.infrastructure.db.postgres.entity.SubCategoryEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
 import java.util.List;
 
 @Mapper(componentModel = "spring")
-public interface CategoryEntityMapper {
+public interface SubCategoryEntityMapper {
 
     @Mapping(target = "name", source = "name")
     @Mapping(target = "description", source = "description")
     @Mapping(target = "route", source = "route")
     @Mapping(target = "enabled", source = "enabled")
-    Category toDomain(CategoryEntity entity);
+    SubCategory toDomain(SubCategoryEntity entity);
 
 
     @Mapping(target = "name", source = "name")
     @Mapping(target = "description", source = "description")
     @Mapping(target = "route", source = "route")
     @Mapping(target = "enabled", source = "enabled")
-    CategoryEntity toEntity(Category model);
+    SubCategoryEntity toEntity(SubCategory model);
 
-    List<Category> toDomainList(List<CategoryEntity> entities);
+    List<SubCategory> toDomainList(List<SubCategoryEntity> entities);
 }

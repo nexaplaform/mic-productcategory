@@ -33,7 +33,8 @@ public class CategoryRepositoryImpl implements CategoryRepository {
     @Override
     public Category getById(Long id) {
         return mapper.toDomain(repository.findById(id).orElseThrow(
-                () -> new EntityNotFoundException(NOT_FOUND_RECORD.getCode(), NOT_FOUND_RECORD.getMessage())));
+                () -> new EntityNotFoundException(NOT_FOUND_RECORD.getCode(),
+                        String.format(NOT_FOUND_RECORD.getMessage(), id))));
     }
 
     @Override

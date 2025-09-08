@@ -3,7 +3,7 @@ package com.fiverr.app.api.controller;
 import com.fiverr.app.api.service.CategoryApi;
 import com.fiverr.app.api.service.dto.in.CategoryDtoIn;
 import com.fiverr.app.api.service.dto.in.SortEnumDTO;
-import com.fiverr.app.api.service.dto.out.CategorytDtoOut;
+import com.fiverr.app.api.service.dto.out.CategoryDtoOut;
 import com.fiverr.app.api.service.mapper.CategoryDtoMapper;
 import com.fiverr.app.application.usecase.CategoryUseCase;
 import com.fiverr.app.domain.Category;
@@ -26,30 +26,30 @@ public class CategoryController implements CategoryApi {
     private final CategoryDtoMapper mapper;
 
     @Override
-    public ResponseEntity<CategorytDtoOut> create(CategoryDtoIn dto) {
+    public ResponseEntity<CategoryDtoOut> create(CategoryDtoIn dto) {
         Category category = mapper.toDomain(dto);
         return new ResponseEntity<>(mapper.toDto(useCase.create(category)), HttpStatus.CREATED);
     }
 
     @Override
-    public ResponseEntity<CategorytDtoOut> findById(Long id) {
+    public ResponseEntity<CategoryDtoOut> findById(Long id) {
         return new ResponseEntity<>(mapper.toDto(useCase.getById(id)), HttpStatus.OK);
     }
 
     @Override
-    public ResponseEntity<CategorytDtoOut> update(CategoryDtoIn dto, Long id) {
+    public ResponseEntity<CategoryDtoOut> update(CategoryDtoIn dto, Long id) {
         Category category = mapper.toDomain(dto);
         return new ResponseEntity<>(mapper.toDto(useCase.update(category, id)), HttpStatus.CREATED);
     }
 
     @Override
-    public ResponseEntity<CategorytDtoOut> deleteById(Long id) {
+    public ResponseEntity<CategoryDtoOut> deleteById(Long id) {
         useCase.deleteById(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
     @Override
-    public ResponseEntity<List<CategorytDtoOut>> findAll(Integer page, Integer size, SortEnumDTO sort) {
+    public ResponseEntity<List<CategoryDtoOut>> findAll(Integer page, Integer size, SortEnumDTO sort) {
         return new ResponseEntity<>(mapper.toDtoList(useCase.findAll(page, size, sort.getValue())), HttpStatus.CREATED);
     }
 }

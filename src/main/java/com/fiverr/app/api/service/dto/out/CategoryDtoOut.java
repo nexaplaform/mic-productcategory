@@ -10,7 +10,7 @@ import lombok.With;
 @Data
 @Builder
 @AllArgsConstructor
-public class CategorytDtoOut {
+public class CategoryDtoOut {
 
     @Schema(example = "1")
     private Long id;
@@ -18,6 +18,8 @@ public class CategorytDtoOut {
     private String name;
     @Schema(example = "Fast food chain")
     private String description;
+    @Schema(example = "/home")
+    private String route;
     @Schema(example = "True")
     private Boolean enabled;
 }

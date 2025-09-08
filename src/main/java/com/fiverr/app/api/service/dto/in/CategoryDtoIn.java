@@ -3,7 +3,6 @@ package com.fiverr.app.api.service.dto.in;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Null;
 import lombok.*;
 
 import java.util.List;
@@ -30,7 +29,6 @@ public class CategoryDtoIn {
     @Schema(example = "True", description = "Estado de la categoría")
     private Boolean enabled;
 
-    @Null
     @ArraySchema(schema = @Schema(implementation = Integer.class, description = "Listado de ids de sub-categorias"))
     private List<Long> subCategoryIds;
 }

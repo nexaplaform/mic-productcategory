@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -27,6 +28,6 @@ public class SubCategoryHandler {
             return subCategoryRepository.getById(c.getId());
         }).toList();
 
-        model.setSubCategories(subCategories);
+        model.setSubCategories(new ArrayList<>(subCategories));
     }
 }

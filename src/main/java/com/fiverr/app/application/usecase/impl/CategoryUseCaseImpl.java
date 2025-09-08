@@ -33,6 +33,7 @@ public class CategoryUseCaseImpl implements CategoryUseCase {
     @Override
     public Category update(Category model, Long id) {
         Category category = this.getById(id);
+        subCategoryHandler.addSubCategories(model);
         BeanUtils.copyProperties(model, category, "id");
         return repository.update(category);
     }

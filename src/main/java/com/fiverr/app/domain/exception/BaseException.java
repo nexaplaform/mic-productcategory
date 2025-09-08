@@ -19,10 +19,20 @@ public class BaseException extends RuntimeException {
     private List<String> details;
     private ZonedDateTime timeStamp;
 
-
     public BaseException(String code, String message, ZonedDateTime timeStamp) {
         this.code = code;
         this.message = message;
         this.timeStamp = timeStamp;
+    }
+
+    public BaseException(String code, String message) {
+        this.code = code;
+        this.message = message;
+    }
+
+    public BaseException(String code, String message, List<String> details) {
+        this.code = code;
+        this.message = message;
+        this.details = details;
     }
 }

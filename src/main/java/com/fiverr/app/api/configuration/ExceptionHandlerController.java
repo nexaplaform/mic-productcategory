@@ -7,6 +7,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import java.time.ZonedDateTime;
+import java.util.List;
+
 @RestControllerAdvice
 public class ExceptionHandlerController {
 
@@ -15,8 +18,8 @@ public class ExceptionHandlerController {
         return new ResponseEntity<>(ErrorResponse.builder()
                 .code(ex.getCode())
                 .message(ex.getMessage())
-                .details(ex.getDetails())
-                .timeStamp(ex.getTimeStamp())
+                .details(List.of())
+                .timeStamp(ZonedDateTime.now())
                 .build(), HttpStatus.NOT_FOUND);
     }
 }

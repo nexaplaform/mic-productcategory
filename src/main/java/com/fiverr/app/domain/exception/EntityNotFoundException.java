@@ -1,5 +1,14 @@
 package com.fiverr.app.domain.exception;
 
-public class EntityNotFoundException extends BaseException{
+import java.util.List;
 
+public class EntityNotFoundException extends BaseException {
+
+    public EntityNotFoundException(String code, String message) {
+        super(code, message);
+    }
+
+    public EntityNotFoundException(String code, String message, List<String> details) {
+        super(code, message, details);
+    }
 }

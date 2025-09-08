@@ -2,9 +2,9 @@ spring:
   application:
     name: mic-productcategory
   datasource:
-    url: jdbc:postgresql://localhost:5432/productcategory
-    username: ${POSTGRES_USER:userAuth}
-    password: ${POSTGRES_PASSWORD:passAuth}
+    url: jdbc:postgresql://crossover.proxy.rlwy.net:41618/railway
+    username: ${POSTGRES_USER}
+    password: ${POSTGRES_PASSWORD}
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:

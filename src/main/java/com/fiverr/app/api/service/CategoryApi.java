@@ -13,12 +13,12 @@ import java.util.List;
 
 public interface CategoryApi extends BaseApi<CategoryDtoIn, CategoryDtoOut, Long> {
 
-    @GetMapping
+    @GetMapping("/subCategories")
     @Operation(
             summary = "Get all subcategories.",
             description = "Obtain all sub-categories paginated."
     )
-    default ResponseEntity<List<CategoryDtoOut>> getAllSubcategories(
+    default ResponseEntity<List<CategoryDtoOut>> getSubcategories(
             @RequestParam(name = "page", defaultValue = "0") Integer page,
             @RequestParam(name = "size", defaultValue = "0") Integer size,
             @RequestParam(name = "sort", defaultValue = "0") String sort,

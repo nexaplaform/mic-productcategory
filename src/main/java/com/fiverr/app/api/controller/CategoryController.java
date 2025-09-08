@@ -54,7 +54,7 @@ public class CategoryController implements CategoryApi {
     }
 
     @Override
-    public ResponseEntity<List<CategoryDtoOut>> getAllSubcategories(Integer page, Integer size, String sort, SortEnumDTO sortDirection) {
-        return CategoryApi.super.getAllSubcategories(page, size, sort, sortDirection);
+    public ResponseEntity<List<CategoryDtoOut>> getSubcategories(Integer page, Integer size, String sort, SortEnumDTO sortDirection) {
+        return CategoryApi.super.getSubcategories(page, size, sort, sortDirection);
     }
 }

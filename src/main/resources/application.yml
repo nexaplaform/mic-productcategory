@@ -6,7 +6,7 @@ spring:
     name: mic-productcategory
 
   profiles:
-    active: ${PROFILE}
+    active: ${PROFILE:local}
 
   springdoc:
     show-actuator: true

@@ -12,17 +12,20 @@ import lombok.*;
 public class CategoryDtoIn {
 
     @NotBlank
-    @Schema(example = "Restaurant")
+    @Schema(example = "Restaurante", description = "Nombre de la categoría")
     private String name;
 
     @NotBlank
-    @Schema(example = "Fast food chain")
+    @Schema(example = "Comida rápida", description = "Descripción detallada de la categoría")
     private String description;
 
-    @Schema(example = "/home")
+    @Schema(example = "/home", description = "Ruta web asociada a la categoría")
     private String route;
 
     @NonNull
-    @Schema(example = "True")
+    @Schema(example = "True", description = "Estado de la categoría")
     private Boolean enabled;
+
+    @Schema(example = "123", description = "ID de la categoría padre, si es una subcategoría")
+    private Long parentId;
 }

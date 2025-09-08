@@ -39,8 +39,7 @@ public class CategoryRepositoryImpl implements CategoryRepository {
 
     @Override
     public Category update(Category model) {
-        CategoryEntity entity = repository.save(mapper.toEntity(model));
-        return mapper.toDomain(entity);
+       return this.create(model);
     }
 
     @Override

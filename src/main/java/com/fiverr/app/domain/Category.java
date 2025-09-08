@@ -14,4 +14,5 @@ public class Category {
     private String description;
     private String route;
     private Boolean enabled;
+    private Category subCategory;
 }

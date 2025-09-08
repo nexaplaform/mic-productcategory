@@ -52,4 +52,9 @@ public class CategoryController implements CategoryApi {
     public ResponseEntity<List<CategoryDtoOut>> findAll(Integer page, Integer size, SortEnumDTO sort) {
         return new ResponseEntity<>(mapper.toDtoList(useCase.findAll(page, size, sort.getValue())), HttpStatus.CREATED);
     }
+
+    @Override
+    public ResponseEntity<List<CategoryDtoOut>> getAllSubcategories(Integer page, Integer size, String sort, SortEnumDTO sortDirection) {
+        return CategoryApi.super.getAllSubcategories(page, size, sort, sortDirection);
+    }
 }

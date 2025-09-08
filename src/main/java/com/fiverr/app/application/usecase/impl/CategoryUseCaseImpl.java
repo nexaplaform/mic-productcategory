@@ -15,12 +15,13 @@ import java.util.List;
 @Service
 @AllArgsConstructor
 public class CategoryUseCaseImpl implements CategoryUseCase {
-    
+
     private final CategoryRepository repository;
     private final SubCategoryHandler subCategoryHandler;
 
     @Override
     public Category create(Category model) {
+        subCategoryHandler.addSubCategories(model);
         return repository.create(model);
     }
 

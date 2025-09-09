@@ -46,10 +46,11 @@ public class SubCategoryRepositoryImpl implements SubCategoryRepository {
     @Override
     public List<SubCategory> findAll(Integer page, Integer size, String sort) {
         String sortProperty = "id";
-        Sort sortObject = Sort.by(sort, sortProperty);
+        Sort.Direction direction = Sort.Direction.fromString(sort);
+        Sort sortObject = Sort.by(direction, sortProperty);
         Pageable pageable = PageRequest.of(page, size, sortObject);
-        Page<SubCategoryEntity> roleEntity = repository.findAll(pageable);
-        return mapper.toDomainList(roleEntity.getContent());
+        Page<SubCategoryEntity> userEntity = repository.findAll(pageable);
+        return mapper.toDomainList(userEntity.getContent());
     }
 
     @Override

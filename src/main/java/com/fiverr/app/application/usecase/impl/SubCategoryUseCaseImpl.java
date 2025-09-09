@@ -30,8 +30,9 @@ public class SubCategoryUseCaseImpl implements SubCategoryUseCase {
     @Override
     public SubCategory update(SubCategory model, Long id) {
         SubCategory subCategory = this.getById(id);
-        BeanUtils.copyProperties(model, subCategory, "id");
-        return repository.update(model, id);
+        BeanUtils.copyProperties(model, subCategory);
+        model.setId(id);
+        return repository.update(model);
     }
 
     @Override

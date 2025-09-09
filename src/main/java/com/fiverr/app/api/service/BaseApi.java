@@ -1,6 +1,7 @@
 package com.fiverr.app.api.service;
 
 import com.fiverr.app.api.service.dto.in.SortEnumDTO;
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +16,11 @@ public interface BaseApi<I, O, K> {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    @GetMapping("/id")
+    @GetMapping({"/{id}"})
+    @Operation(
+            summary = "Get record by id",
+            description = "Search a record by id"
+    )
     default ResponseEntity<O> findById(@PathVariable K id) {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
     }
@@ -25,9 +30,13 @@ public interface BaseApi<I, O, K> {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    @DeleteMapping("/id")
-    default ResponseEntity<O> deleteById(@PathVariable K id) {
-        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+    @DeleteMapping({"/{id}"})
+    @Operation(
+            summary = "Delete record",
+            description = "Delete a record by id"
+    )
+    default ResponseEntity<Void> deleteById(@PathVariable K id) {
+        return new ResponseEntity(HttpStatus.NOT_IMPLEMENTED);
     }
 
     @GetMapping

@@ -43,7 +43,7 @@ public class SubCategoryController implements SubCategoryApi {
     }
 
     @Override
-    public ResponseEntity<SubCategoryDtoOut> deleteById(Long id) {
+    public ResponseEntity<Void> deleteById(Long id) {
         useCase.deleteById(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }

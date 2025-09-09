@@ -43,7 +43,7 @@ public class CategoryController implements CategoryApi {
     }
 
     @Override
-    public ResponseEntity<CategoryDtoOut> deleteById(Long id) {
+    public ResponseEntity<Void> deleteById(Long id) {
         useCase.deleteById(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }

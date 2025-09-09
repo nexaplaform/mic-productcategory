@@ -27,11 +27,11 @@ public interface BaseApi<I, O, K> {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    @PutMapping("/id")
+    @PutMapping("/{id}")
     @Operation(
             summary = "Update record",
             description = "Update a record by id")
-    default ResponseEntity<O> update(@Valid @RequestBody I dto, Long id) {
+    default ResponseEntity<O> update(@Valid @RequestBody I dto, K id) {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
     }
 

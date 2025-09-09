@@ -16,7 +16,7 @@ public interface BaseApi<I, O, K> {
     }
 
     @GetMapping("/id")
-    default ResponseEntity<O> findById(K id) {
+    default ResponseEntity<O> findById(@PathVariable K id) {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
     }
 
@@ -26,7 +26,7 @@ public interface BaseApi<I, O, K> {
     }
 
     @DeleteMapping("/id")
-    default ResponseEntity<O> deleteById(K id) {
+    default ResponseEntity<O> deleteById(@PathVariable K id) {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
     }
 
@@ -35,7 +35,7 @@ public interface BaseApi<I, O, K> {
             @RequestParam(defaultValue = "0") Integer page,
             @RequestParam(defaultValue = "9") Integer size,
             @RequestParam(defaultValue = "ASC") SortEnumDTO sort
-            ) {
+    ) {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
     }
 }

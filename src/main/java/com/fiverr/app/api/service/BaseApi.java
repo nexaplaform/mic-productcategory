@@ -31,7 +31,7 @@ public interface BaseApi<I, O, K> {
     @Operation(
             summary = "Update record",
             description = "Update a record by id")
-    default ResponseEntity<O> update(@Valid @RequestBody I dto, K id) {
+    default ResponseEntity<O> update(@Valid @RequestBody I dto, @PathVariable K id) {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
     }
 

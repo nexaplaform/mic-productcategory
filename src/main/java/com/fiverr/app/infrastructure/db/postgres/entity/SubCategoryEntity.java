@@ -1,5 +1,6 @@
 package com.fiverr.app.infrastructure.db.postgres.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -27,4 +28,9 @@ public class SubCategoryEntity {
 
     @Column(name = "enabled")
     private Boolean enabled;
+
+    @JsonBackReference
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "category_id")
+    private CategoryEntity category;
 }

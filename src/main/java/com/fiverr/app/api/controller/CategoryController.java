@@ -50,6 +50,6 @@ public class CategoryController implements CategoryApi {
 
     @Override
     public ResponseEntity<List<CategoryDtoOut>> findAll(Integer page, Integer size, SortEnumDTO sort) {
-        return new ResponseEntity<>(mapper.toDtoList(useCase.findAll(page, size, sort.getValue())), HttpStatus.CREATED);
+        return new ResponseEntity<>(mapper.toDtoList(useCase.findAll(page, size, sort.getValue())), HttpStatus.OK);
     }
 }

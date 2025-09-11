@@ -1,5 +1,6 @@
 package com.fiverr.app.api.service.dto.out;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,6 +11,7 @@ import lombok.With;
 @Data
 @Builder
 @AllArgsConstructor
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class SubCategoryDtoOut {
 
     @Schema(example = "1")
@@ -26,4 +28,7 @@ public class SubCategoryDtoOut {
 
     @Schema(example = "true")
     private Boolean enabled;
+
+    @Schema(example = "1")
+    private Long categoryId;
 }

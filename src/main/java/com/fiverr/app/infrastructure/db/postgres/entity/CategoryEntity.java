@@ -1,8 +1,10 @@
 package com.fiverr.app.infrastructure.db.postgres.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @With
@@ -30,10 +32,20 @@ public class CategoryEntity {
     @Column(name = "enabled")
     private Boolean enabled;
 
-    @ManyToMany
-    @JoinTable(
-            name = "category_subcategory",
-            joinColumns = @JoinColumn(name = "category_id"),
-            inverseJoinColumns = @JoinColumn(name = "subcategory_id"))
-    private List<SubCategoryEntity> subCategories;
+    @OneToMany(
+            mappedBy = "category",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true)
+    @JsonManagedReference
+    private List<SubCategoryEntity> subCategories = new ArrayList<>();
+
+    public void addSubCategory(SubCategoryEntity subCategory) {
+        subCategories.add(subCategory);
+        subCategory.setCategory(this);
+    }
+
+    public void removeSubCategory(SubCategoryEntity subCategory) {
+        subCategories.remove(subCategory);
+        subCategory.setCategory(null);
+    }
 }

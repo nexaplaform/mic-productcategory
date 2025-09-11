@@ -15,16 +15,16 @@ import java.util.List;
 @AllArgsConstructor
 public class SubCategoryUseCaseImpl implements SubCategoryUseCase {
 
-    private SubCategoryRepository repository;
+    private final SubCategoryRepository subCategoryRepository;
 
     @Override
     public SubCategory create(SubCategory model) {
-        return repository.create(model);
+        return subCategoryRepository.create(model);
     }
 
     @Override
     public SubCategory getById(Long id) {
-        return repository.getById(id);
+        return subCategoryRepository.getById(id);
     }
 
     @Override
@@ -32,17 +32,17 @@ public class SubCategoryUseCaseImpl implements SubCategoryUseCase {
         SubCategory subCategory = this.getById(id);
         BeanUtils.copyProperties(model, subCategory);
         model.setId(id);
-        return repository.update(model);
+        return subCategoryRepository.update(model);
     }
 
     @Override
     public List<SubCategory> findAll(Integer page, Integer size, String sort) {
-        return repository.findAll(page, size, sort);
+        return subCategoryRepository.findAll(page, size, sort);
     }
 
     @Override
     public void deleteById(Long id) {
         this.getById(id);
-        repository.deleteById(id);
+        subCategoryRepository.deleteById(id);
     }
 }

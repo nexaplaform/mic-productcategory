@@ -25,4 +25,7 @@ public class SubCategoryDtoIn {
     @NonNull
     @Schema(example = "True", description = "Estado de la categoría")
     private Boolean enabled;
+
+    @Schema(example = "1")
+    private Long categoryId;
 }

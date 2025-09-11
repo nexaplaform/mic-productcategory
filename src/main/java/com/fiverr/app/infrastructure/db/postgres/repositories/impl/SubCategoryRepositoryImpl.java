@@ -40,7 +40,6 @@ public class SubCategoryRepositoryImpl implements SubCategoryRepository {
                             String.format(NOT_FOUND_RECORD.getMessage(), model.getCategory().getId())
                     ));
             subCategoryEntity.setCategory(categoryEntity);
-            //categoryEntity.getSubCategories().add(subCategoryEntity);
         }
 
         SubCategoryEntity entity = repository.save(subCategoryEntity);
@@ -62,12 +61,15 @@ public class SubCategoryRepositoryImpl implements SubCategoryRepository {
 
     @Override
     public List<SubCategory> findAll(Integer page, Integer size, String sort) {
-        String sortProperty = "id";
-        Sort.Direction direction = Sort.Direction.fromString(sort);
-        Sort sortObject = Sort.by(direction, sortProperty);
-        Pageable pageable = PageRequest.of(page, size, sortObject);
-        Page<SubCategoryEntity> userEntity = repository.findAll(pageable);
-        return mapper.toDomainList(userEntity.getContent());
+        if (Objects.nonNull(page) && Objects.nonNull(size) && Objects.nonNull(sort)) {
+            String sortProperty = "id";
+            Sort.Direction direction = Sort.Direction.fromString(sort);
+            Sort sortObject = Sort.by(direction, sortProperty);
+            Pageable pageable = PageRequest.of(page, size, sortObject);
+            Page<SubCategoryEntity> userEntity = repository.findAll(pageable);
+            return mapper.toDomainList(userEntity.getContent());
+        }
+        return mapper.toDomainList(repository.findAll());
     }
 
     @Override

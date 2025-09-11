@@ -50,6 +50,6 @@ public class SubCategoryController implements SubCategoryApi {
 
     @Override
     public ResponseEntity<List<SubCategoryDtoOut>> findAll(Integer page, Integer size, SortEnumDTO sort) {
-        return new ResponseEntity<>(mapper.toDtoList(useCase.findAll(page, size, sort.getValue())), HttpStatus.CREATED);
+        return new ResponseEntity<>(mapper.toDtoList(useCase.findAll(page, size, sort.getValue())), HttpStatus.OK);
     }
 }

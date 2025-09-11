@@ -11,7 +11,7 @@ import java.util.Map;
 @Component
 public class CycleAvoidingMappingContext {
 
-    private Map<Object, Object> knownInstances = new IdentityHashMap<>();
+    private final Map<Object, Object> knownInstances = new IdentityHashMap<>();
 
     @BeforeMapping
     public <T> T getMappedInstance(Object source, @TargetType Class<T> targetType) {
@@ -23,7 +23,6 @@ public class CycleAvoidingMappingContext {
         knownInstances.put(source, target);
     }
 
-    // Se recomienda resetear el estado para cada mapeo
     public void clear() {
         knownInstances.clear();
     }

@@ -27,8 +27,8 @@ public class CategoryRepositoryImpl implements CategoryRepository {
 
     @Override
     public Category create(Category model) {
-        CycleAvoidingMappingContext context = new CycleAvoidingMappingContext();
-        CategoryEntity entityMap = mapper.toEntity(model, context);
+
+        CategoryEntity entityMap = mapper.toEntity(model, new CycleAvoidingMappingContext());
 
         if (Objects.nonNull(model.getSubCategories()) && !model.getSubCategories().isEmpty()) {
             List<SubCategoryEntity> subCategoryEntities = model.getSubCategories().stream()
@@ -42,16 +42,14 @@ public class CategoryRepositoryImpl implements CategoryRepository {
         }
 
         CategoryEntity entity = repository.save(entityMap);
-
-        return mapper.toDomain(entity, context);
+        return mapper.toDomain(entity, new CycleAvoidingMappingContext());
     }
 
     @Override
     public Category getById(Long id) {
-        CycleAvoidingMappingContext context = new CycleAvoidingMappingContext();
         return mapper.toDomain(repository.findById(id).orElseThrow(
                 () -> new EntityNotFoundException(NOT_FOUND_RECORD.getCode(),
-                        String.format(NOT_FOUND_RECORD.getMessage(), id))), context);
+                        String.format(NOT_FOUND_RECORD.getMessage(), id))), new CycleAvoidingMappingContext());
     }
 
     @Override
@@ -61,8 +59,7 @@ public class CategoryRepositoryImpl implements CategoryRepository {
 
     @Override
     public List<Category> findAll() {
-        CycleAvoidingMappingContext context = new CycleAvoidingMappingContext();
-        return mapper.toDomainList(repository.findAll(), context);
+        return mapper.toDomainList(repository.findAll(), new CycleAvoidingMappingContext());
     }
 
     @Override

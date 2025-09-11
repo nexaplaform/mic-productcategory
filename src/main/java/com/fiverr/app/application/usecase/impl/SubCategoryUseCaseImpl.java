@@ -36,8 +36,8 @@ public class SubCategoryUseCaseImpl implements SubCategoryUseCase {
     }
 
     @Override
-    public List<SubCategory> findAll(Integer page, Integer size, String sort) {
-        return subCategoryRepository.findAll(page, size, sort);
+    public List<SubCategory> findAll() {
+        return subCategoryRepository.findAll();
     }
 
     @Override

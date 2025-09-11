@@ -1,6 +1,5 @@
 package com.fiverr.app.api.service;
 
-import com.fiverr.app.api.service.dto.in.SortEnumDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -47,10 +46,7 @@ public interface BaseApi<I, O, K> {
     @Operation(
             summary = "Get paginated records",
             description = "Get a number of paginated records")
-    default ResponseEntity<List<O>> findAll(
-            @RequestParam Integer page,
-            @RequestParam Integer size,
-            @RequestParam SortEnumDTO sort) {
+    default ResponseEntity<List<O>> findAll() {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
     }
 }

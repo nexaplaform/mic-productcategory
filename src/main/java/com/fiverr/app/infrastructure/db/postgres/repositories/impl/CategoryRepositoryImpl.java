@@ -10,10 +10,6 @@ import com.fiverr.app.infrastructure.db.postgres.mapper.CategoryEntityMapper;
 import com.fiverr.app.infrastructure.db.postgres.repositories.CategoryJpaRepository;
 import com.fiverr.app.infrastructure.db.postgres.repositories.SubCategoryJpaRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -64,14 +60,9 @@ public class CategoryRepositoryImpl implements CategoryRepository {
     }
 
     @Override
-    public List<Category> findAll(Integer page, Integer size, String sort) {
+    public List<Category> findAll() {
         CycleAvoidingMappingContext context = new CycleAvoidingMappingContext();
-        String sortProperty = "id";
-        Sort.Direction direction = Sort.Direction.fromString(sort);
-        Sort sortObject = Sort.by(direction, sortProperty);
-        Pageable pageable = PageRequest.of(page, size, sortObject);
-        Page<CategoryEntity> userEntity = repository.findAll(pageable);
-        return mapper.toDomainList(userEntity.getContent(), context);
+        return mapper.toDomainList(repository.findAll(), context);
     }
 
     @Override

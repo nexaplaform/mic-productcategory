@@ -9,10 +9,6 @@ import com.fiverr.app.infrastructure.db.postgres.mapper.SubCategoryEntityMapper;
 import com.fiverr.app.infrastructure.db.postgres.repositories.CategoryJpaRepository;
 import com.fiverr.app.infrastructure.db.postgres.repositories.SubCategoryJpaRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -60,15 +56,7 @@ public class SubCategoryRepositoryImpl implements SubCategoryRepository {
     }
 
     @Override
-    public List<SubCategory> findAll(Integer page, Integer size, String sort) {
-        if (Objects.nonNull(page) && Objects.nonNull(size) && Objects.nonNull(sort)) {
-            String sortProperty = "id";
-            Sort.Direction direction = Sort.Direction.fromString(sort);
-            Sort sortObject = Sort.by(direction, sortProperty);
-            Pageable pageable = PageRequest.of(page, size, sortObject);
-            Page<SubCategoryEntity> userEntity = repository.findAll(pageable);
-            return mapper.toDomainList(userEntity.getContent());
-        }
+    public List<SubCategory> findAll() {
         return mapper.toDomainList(repository.findAll());
     }
 

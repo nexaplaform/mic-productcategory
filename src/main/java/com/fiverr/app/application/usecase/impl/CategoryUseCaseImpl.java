@@ -37,8 +37,8 @@ public class CategoryUseCaseImpl implements CategoryUseCase {
     }
 
     @Override
-    public List<Category> findAll(Integer page, Integer size, String sort) {
-        return repository.findAll(page, size, sort);
+    public List<Category> findAll() {
+        return repository.findAll();
     }
 
     @Override

@@ -2,7 +2,6 @@ package com.fiverr.app.api.controller;
 
 import com.fiverr.app.api.service.CategoryApi;
 import com.fiverr.app.api.service.dto.in.CategoryDtoIn;
-import com.fiverr.app.api.service.dto.in.SortEnumDTO;
 import com.fiverr.app.api.service.dto.out.CategoryDtoOut;
 import com.fiverr.app.api.service.mapper.CategoryDtoMapper;
 import com.fiverr.app.application.usecase.CategoryUseCase;
@@ -49,7 +48,7 @@ public class CategoryController implements CategoryApi {
     }
 
     @Override
-    public ResponseEntity<List<CategoryDtoOut>> findAll(Integer page, Integer size, SortEnumDTO sort) {
-        return new ResponseEntity<>(mapper.toDtoList(useCase.findAll(page, size, sort.getValue())), HttpStatus.OK);
+    public ResponseEntity<List<CategoryDtoOut>> findAll() {
+        return new ResponseEntity<>(mapper.toDtoList(useCase.findAll()), HttpStatus.OK);
     }
 }

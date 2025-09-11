@@ -1,7 +1,6 @@
 package com.fiverr.app.api.controller;
 
 import com.fiverr.app.api.service.SubCategoryApi;
-import com.fiverr.app.api.service.dto.in.SortEnumDTO;
 import com.fiverr.app.api.service.dto.in.SubCategoryDtoIn;
 import com.fiverr.app.api.service.dto.out.SubCategoryDtoOut;
 import com.fiverr.app.api.service.mapper.SubCategoryDtoMapper;
@@ -49,7 +48,7 @@ public class SubCategoryController implements SubCategoryApi {
     }
 
     @Override
-    public ResponseEntity<List<SubCategoryDtoOut>> findAll(Integer page, Integer size, SortEnumDTO sort) {
-        return new ResponseEntity<>(mapper.toDtoList(useCase.findAll(page, size, sort.getValue())), HttpStatus.OK);
+    public ResponseEntity<List<SubCategoryDtoOut>> findAll() {
+        return new ResponseEntity<>(mapper.toDtoList(useCase.findAll()), HttpStatus.OK);
     }
 }

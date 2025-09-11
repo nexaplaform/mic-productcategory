@@ -48,9 +48,9 @@ public interface BaseApi<I, O, K> {
             summary = "Get paginated records",
             description = "Get a number of paginated records")
     default ResponseEntity<List<O>> findAll(
-            @RequestParam(defaultValue = "0") Integer page,
-            @RequestParam(defaultValue = "9") Integer size,
-            @RequestParam(defaultValue = "ASC") SortEnumDTO sort) {
+            @RequestParam Integer page,
+            @RequestParam Integer size,
+            @RequestParam SortEnumDTO sort) {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
     }
 }
